@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Authentication template module"""
 
+import os
 from flask import request
 from typing import List, Pattern, TypeVar
 
@@ -31,8 +32,8 @@ class Auth:
         None
 
     def session_cookie(self, request=None):
-        """this method return cookie value from a request"""
+        """This method returns the cookie value from a request."""
         if request is None:
             return None
-        _my_session_id = getenv("SESSION_NAME")
+        _my_session_id = os.getenv("SESSION_NAME")
         return request.cookies.get(_my_session_id)
