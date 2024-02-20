@@ -51,9 +51,9 @@ def login() -> str:
 @app.route('/sessions', methods=['POST'], strict_slashes=False)
 def logout() -> str:
     """Method implement a logout function to respond to Delete"""
-    cookie = request.cookies.get('session_id', None)
+    cookie = request.cookies.get('session_id')
     user = AUTH.get_user_from_session_id(cookie)
-    if cookie is None or user is None:
+    if not user
         abort(403)
     AUTH.destroy_session(user.id)
     return redirect('/')
