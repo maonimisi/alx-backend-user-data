@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 """API Route Module"""
 
-from flask import Flask, jsonify, request, abort, redirect
 from auth import Auth
+from flask import Flask, jsonify, request, abort, redirect
 
-app = Flask(__name__)
 AUTH = Auth()
+app = Flask(__name__)
 
 
 @app.route('/', methods=['GET'], strict_slashes=False)
 def index() -> str:
     """Return a json payload"""
-    return jsonify({"message": "Bienvenue"})
+    return jsonify({"message": "Bienvenue"}), 200
 
 
 @app.route('/users', methods=['POST'], strict_slashes=False)
